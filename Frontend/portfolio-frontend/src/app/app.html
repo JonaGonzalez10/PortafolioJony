@@ -1,0 +1,208 @@
+﻿<div class="page">
+  <div class="bg-shape bg-shape--one"></div>
+  <div class="bg-shape bg-shape--two"></div>
+
+  <header class="hero">
+    <div class="hero__intro">
+      <span class="pill">{{ hero.availability }}</span>
+      <h1>Hola, soy {{ hero.name }}.</h1>
+      <p class="headline">{{ hero.headline }}</p>
+      <div class="meta">
+        <span class="meta__item">Ubicacion: {{ hero.location }}</span>
+        <span class="meta__item">Rol: {{ hero.role }}</span>
+      </div>
+      <div class="actions">
+        <a class="button primary" href="#projects">Ver proyectos</a>
+        <a class="button ghost" [href]="'mailto:' + hero.email">Escribeme</a>
+      </div>
+      <div class="chips">
+        <span class="chip" *ngFor="let skill of featuredSkills()">{{ skill }}</span>
+      </div>
+    </div>
+    <div class="hero__card">
+      <div class="hero__card__title">Full Stack Angular + .NET</div>
+      <p class="hero__card__desc">Ritmo agil, foco en entregar valor y medir impacto.</p>
+      <div class="stats">
+        <div class="stat">
+          <span class="stat__value">15+</span>
+          <span class="stat__label">Entregas productivas</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value">4</span>
+          <span class="stat__label">Anos construyendo</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value">24h</span>
+          <span class="stat__label">Respuesta media</span>
+        </div>
+      </div>
+      <div class="socials">
+        <a *ngFor="let social of socials" class="link" [href]="social.url" target="_blank" rel="noopener">
+          {{ social.label }}
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section id="projects" class="section">
+    <div class="section__heading">
+      <p class="eyebrow">Proyectos destacados</p>
+      <h2>Trabajo que disfruto mostrar</h2>
+      <p class="muted">Seleccion de proyectos donde combine Angular en el front y .NET en el backend para entregar resultados medibles.</p>
+    </div>
+    <div class="grid">
+      <article class="card" *ngFor="let project of projects()">
+        <div class="card__top">
+          <span class="pill pill--ghost">{{ project.year }}</span>
+          <span class="pill pill--accent" *ngIf="project.status">{{ project.status }}</span>
+        </div>
+        <h3>{{ project.title }}</h3>
+        <p class="muted">{{ project.summary }}</p>
+        <div class="tags">
+          <span class="tag" *ngFor="let tech of project.stack">{{ tech }}</span>
+        </div>
+        <div class="links">
+          <a *ngIf="project.link && project.link !== '#'" class="link" [href]="project.link" target="_blank" rel="noopener">Demo</a>
+          <a *ngIf="project.repo && project.repo !== '#'" class="link" [href]="project.repo" target="_blank" rel="noopener">Codigo</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="experience" class="section section--split">
+    <div class="section__heading">
+      <p class="eyebrow">Experiencia</p>
+      <h2>Lo que aporto a los equipos</h2>
+      <p class="muted">Trabajo mano a mano con producto, QA y negocio para lanzar rapido, medir y ajustar.</p>
+    </div>
+    <div class="timeline">
+      <article class="timeline__item" *ngFor="let experience of experiences()">
+        <div class="timeline__header">
+          <h3>{{ experience.role }}</h3>
+          <span class="pill pill--ghost">{{ experience.period }}</span>
+        </div>
+        <p class="muted">{{ experience.place }}</p>
+        <p class="impact">{{ experience.impact }}</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <div class="section__heading">
+      <p class="eyebrow">Stack</p>
+      <h2>Herramientas que domino</h2>
+    </div>
+    <div class="skill-grid">
+      <span class="skill" *ngFor="let skill of skills()">{{ skill }}</span>
+    </div>
+  </section>
+
+  <section id="certifications" class="section">
+    <div class="section__heading">
+      <p class="eyebrow">Certificaciones</p>
+      <h2>Formacion continua</h2>
+      <p class="muted">Certificaciones y cursos que respaldan mi experiencia tecnica.</p>
+    </div>
+    <div class="grid">
+      <article class="card" *ngFor="let cert of certifications()">
+        <h3>{{ cert.name }}</h3>
+        <p class="muted">{{ cert.issuer }}</p>
+        <span class="pill pill--ghost">{{ cert.date }}</span>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="section__heading">
+      <p class="eyebrow">Contacto</p>
+      <h2>Construyamos algo juntos</h2>
+      <p class="muted">Cuentame tu idea o el problema que quieres resolver. Completa el formulario y te respondere a la brevedad.</p>
+    </div>
+
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmitContact()" class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Nombre *</label>
+          <input 
+            type="text" 
+            id="name" 
+            formControlName="name"
+            placeholder="Tu nombre completo"
+            [class.error]="contactForm.get('name')?.touched && contactForm.get('name')?.invalid"
+          />
+          <span class="error-message" *ngIf="getErrorMessage('name')">
+            {{ getErrorMessage('name') }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input 
+            type="email" 
+            id="email" 
+            formControlName="email"
+            placeholder="tu@email.com"
+            [class.error]="contactForm.get('email')?.touched && contactForm.get('email')?.invalid"
+          />
+          <span class="error-message" *ngIf="getErrorMessage('email')">
+            {{ getErrorMessage('email') }}
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Asunto *</label>
+        <input 
+          type="text" 
+          id="subject" 
+          formControlName="subject"
+          placeholder="Motivo de tu mensaje"
+          [class.error]="contactForm.get('subject')?.touched && contactForm.get('subject')?.invalid"
+        />
+        <span class="error-message" *ngIf="getErrorMessage('subject')">
+          {{ getErrorMessage('subject') }}
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Mensaje *</label>
+        <textarea 
+          id="message" 
+          formControlName="message"
+          rows="5"
+          placeholder="Describe tu proyecto o consulta..."
+          [class.error]="contactForm.get('message')?.touched && contactForm.get('message')?.invalid"
+        ></textarea>
+        <span class="error-message" *ngIf="getErrorMessage('message')">
+          {{ getErrorMessage('message') }}
+        </span>
+      </div>
+
+      <div class="form-actions">
+        <button 
+          type="submit" 
+          class="button primary"
+          [disabled]="isSubmitting() || contactForm.invalid"
+        >
+          {{ isSubmitting() ? 'Enviando...' : 'Enviar mensaje' }}
+        </button>
+
+        <div class="contact-links">
+          <a class="button ghost" [href]="'https://wa.me/' + hero.whatsapp" target="_blank" rel="noopener">
+            WhatsApp
+          </a>
+          <a class="button ghost" href="https://github.com/JonaGonzalez10" target="_blank" rel="noopener">GitHub</a>
+          <a class="button ghost" [href]="'mailto:' + hero.email">Email directo</a>
+        </div>
+      </div>
+
+      <div class="alert success" *ngIf="submitSuccess()">
+        ¡Mensaje enviado correctamente! Te responderé pronto.
+      </div>
+
+      <div class="alert error" *ngIf="submitError()">
+        {{ submitError() }}
+      </div>
+    </form>
+  </section>
+</div>
