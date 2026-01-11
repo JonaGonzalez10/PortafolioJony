@@ -84,3 +84,5 @@ D:\Proyectos personales\PortafolioJony\Backend\PortafolioAPI\obj\Debug\net8.0\Po
 D:\Proyectos personales\PortafolioJony\Backend\PortafolioAPI\obj\Debug\net8.0\PortafolioAPI.genruntimeconfig.cache
 D:\Proyectos personales\PortafolioJony\Backend\PortafolioAPI\obj\Debug\net8.0\ref\PortafolioAPI.dll
 D:\Proyectos personales\PortafolioJony\Backend\PortafolioAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Proyectos personales\PortafolioJony\Backend\PortafolioAPI\obj\Debug\net8.0\PortafolioAPI.sourcelink.json
+D:\Proyectos personales\PortafolioJony\Backend\PortafolioAPI\obj\Debug\net8.0\swae.build.ex.cache

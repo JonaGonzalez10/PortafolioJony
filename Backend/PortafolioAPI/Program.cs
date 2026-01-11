@@ -1,11 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using PortafolioAPI.Data;
 using PortafolioAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configurar puerto para Railway
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
 builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
 
 // Add services to the container
