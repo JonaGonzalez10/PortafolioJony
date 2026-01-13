@@ -11,6 +11,7 @@ type Project = {
   link?: string;
   repo?: string;
   status?: string;
+  image?: string;
 };
 
 type Experience = {
@@ -69,7 +70,8 @@ export class App {
       year: '2024',
       link: 'https://gestiongastos-production.up.railway.app',
       repo: 'https://github.com/JonaGonzalez10',
-      status: 'En producción'
+      status: 'En producción',
+      image: 'gestion-gastos.png'
     },
     {
       title: 'Automatización de Reportes Telefónicos',

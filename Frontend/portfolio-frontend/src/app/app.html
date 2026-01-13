@@ -29,7 +29,7 @@
         </div>
         <div class="stat">
           <span class="stat__value">4</span>
-          <span class="stat__label">Anos construyendo</span>
+          <span class="stat__label">Años construyendo</span>
         </div>
         <div class="stat">
           <span class="stat__value">24h</span>
@@ -60,6 +60,9 @@
         <p class="muted">{{ project.summary }}</p>
         <div class="tags">
           <span class="tag" *ngFor="let tech of project.stack">{{ tech }}</span>
+        </div>
+        <div class="card__image" *ngIf="project.image">
+          <img [src]="project.image" [alt]="project.title" />
         </div>
         <div class="links">
           <a *ngIf="project.link && project.link !== '#'" class="link" [href]="project.link" target="_blank" rel="noopener">Demo</a>
