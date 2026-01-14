@@ -170,7 +170,7 @@ export class App {
   readonly socials = [
     { label: 'GitHub', url: 'https://github.com/JonaGonzalez10' },
     { label: 'LinkedIn', url: 'https://www.linkedin.com/in/jonathan-gonzález-sánchez-207388189/' },
-    { label: 'Email', url: 'mailto:jonathan.gonzalez1095@outlook.com' }
+    { label: 'Email', url: 'mailto:jgonsanchez10@gmail.com' }
   ];
 
   onSubmitContact() {
